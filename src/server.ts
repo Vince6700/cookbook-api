@@ -4,6 +4,7 @@ import bodyParser from "koa-bodyparser";
 import cors from "koa2-cors";
 import logger from "koa-logger";
 import indexRouter from "./routes/index";
+import connect from "./db/mongo";
 
 const app: Koa = new Koa();
 
@@ -16,6 +17,12 @@ app.use(
 app.use(logger());
 
 app.use(indexRouter.routes());
+
+connect({ db: process.env.MONGO })
+  .then(() => console.log("connected to db"))
+  .catch((e: Error) => {
+    console.error(e);
+  });
 
 const server = app
   .listen(process.env.PORT, async () => {
