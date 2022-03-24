@@ -3,6 +3,7 @@ import Koa from "koa";
 import bodyParser from "koa-bodyparser";
 import cors from "koa2-cors";
 import logger from "koa-logger";
+import indexRouter from "./routes/index";
 
 const app: Koa = new Koa();
 
@@ -13,6 +14,8 @@ app.use(
   })
 );
 app.use(logger());
+
+app.use(indexRouter.routes());
 
 const server = app
   .listen(process.env.PORT, async () => {
