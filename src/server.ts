@@ -1,3 +1,4 @@
+import "dotenv/config";
 import Koa from "koa";
 import bodyParser from "koa-bodyparser";
 import cors from "koa2-cors";
@@ -14,8 +15,8 @@ app.use(
 app.use(logger());
 
 const server = app
-  .listen(3000, async () => {
-    console.log(`Server listening on port: 3000`);
+  .listen(process.env.PORT, async () => {
+    console.log(`Server listening on port: ${process.env.PORT}`);
   })
   .on("error", (err) => {
     console.error(err);
