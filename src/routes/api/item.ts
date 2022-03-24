@@ -3,10 +3,11 @@ import { Context } from "koa";
 
 const router = new Router();
 
-router.get("/", async (ctx: Context) => {
+router.get("/api/items", async (ctx: Context) => {
+  ctx.status = 200;
   ctx.body = {
     status: "success",
-    data: "What do you want to cook today ?",
+    data: [2, 2],
   };
 });
 
