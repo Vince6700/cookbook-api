@@ -14,7 +14,7 @@ router.get("/api/lists", async (ctx: Context) => {
 
 router.post("/api/lists", async (ctx: Context) => {
   try {
-    const body = ctx.request.body;
+    const { body } = ctx.request;
     ctx.body = await List.create(body);
     ctx.status = 201;
   } catch (e) {

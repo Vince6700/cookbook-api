@@ -5,7 +5,8 @@ import cors from "koa2-cors";
 import logger from "koa-logger";
 import indexRouter from "./routes/index";
 import connect from "./db/mongo";
-import listsRouter from "./routes/api/lists";
+import listsRouter from "./routes/api/lists.routes";
+import registerRouter from "./routes/api/register.routes";
 
 const app: Koa = new Koa();
 
@@ -19,6 +20,7 @@ app.use(logger());
 
 app.use(indexRouter.routes());
 app.use(listsRouter.routes());
+app.use(registerRouter.routes());
 
 connect({ db: process.env.MONGO })
   .then(() => console.log("connected to db"))

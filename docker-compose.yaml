@@ -10,5 +10,17 @@ services:
     volumes:
       - mongodb_data_container:/data/db
 
+  postgress_container:
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgress_container:/var/lib/postgresql/data
+
 volumes:
   mongodb_data_container:
+  postgress_container:
