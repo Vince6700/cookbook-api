@@ -10,7 +10,7 @@ const verifyToken = (ctx: Context, next: Next) => {
   if (!token) {
     ctx.status = 403;
     ctx.body = "A token is required for authentication";
-    throw new Error("A token is required for authentication");
+    return;
   }
 
   try {
