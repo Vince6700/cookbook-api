@@ -1,8 +1,11 @@
 import Router from "@koa/router";
 import { Context } from "koa";
 import List from "../../models/list.model";
+import authMiddleware from "../../middleware/auth.middleware";
 
 const router = new Router();
+
+router.use(authMiddleware);
 
 router.get("/api/lists", async (ctx: Context) => {
   ctx.status = 200;
